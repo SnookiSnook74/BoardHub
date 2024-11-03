@@ -27,6 +27,5 @@ struct BoardHubApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
     }
 }
