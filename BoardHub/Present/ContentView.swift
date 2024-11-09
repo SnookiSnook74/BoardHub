@@ -10,10 +10,17 @@ import SwiftData
 
 struct ContentView: View {
 
+    @Environment(\.modelContext) private var context
+    private var dbManager: DatabaseManager { DatabaseManager(context: context) }
+    
     var body: some View {
-
-        Button("test") {
-            
+        VStack {
+            // Ваш интерфейс
+        }
+        .onAppear {
+            var test = BoardModel(title: "Hello")
+            dbManager.add(ListModel(title: "Oooo", position: 1, board: test))
+            dbManager.add(test)
         }
     }
 }
