@@ -29,6 +29,10 @@ struct BoardHubApp: App {
         }
     }()
     
+    init() {
+        DIContainer.shared.registerAllDependencies(modelContainer: sharedModelContainer)
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
