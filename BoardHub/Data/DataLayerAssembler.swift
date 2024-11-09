@@ -10,10 +10,11 @@ import SwiftData
 
 
 final class DataLayerAssembler {
-    func registerDataLayer(in container: DIContainer, modelContainer: ModelContainer) {
+    func registerDataLayer(in container: DIContainer) {
+
         container.register(DatabaseServiceProtocol.self) {
-            let context = ModelContext(modelContainer)
-            return DatabaseManager(context: context)
+            let contextModel = DataContext.shared.modelContext
+            return DatabaseManager(context: contextModel)
         }
     }
 }

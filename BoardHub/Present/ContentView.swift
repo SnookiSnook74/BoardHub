@@ -9,17 +9,23 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-
-    @Environment(\.modelContext) private var context
+    
+    @Query private var board: [BoardModel]
+    var dbManager: DatabaseServiceProtocol = DIContainer.shared.resolve(DatabaseServiceProtocol.self)
     
     var body: some View {
         VStack {
-            // Ваш интерфейс
-        }
-        .onAppear {
-            var test = BoardModel(title: "Hello")
-//            dbManager?.add(ListModel(title: "Oooo", position: 1, board: test))
-//            dbManager?.add(test)
+            List(board) { item in
+                Text(item.title)
+            }
+            
+            Button("Добавить тестовые данные") {
+                let test = BoardModel(title: "Hello \(Int.random(in: 0...10))")
+                let list = ListModel(title: "Oooo", position: 1, board: test)
+                dbManager.add(list)
+                dbManager.add(test)
+            }
+            .padding()
         }
     }
 }
