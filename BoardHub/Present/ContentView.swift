@@ -9,10 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    
+
     @Query private var board: [BoardModel]
     var dbManager: DatabaseServiceProtocol = DIContainer.shared.resolve(DatabaseServiceProtocol.self)
-    
+
     var body: some View {
         VStack {
             List(board) { item in

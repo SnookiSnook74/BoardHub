@@ -13,7 +13,7 @@ final class DataContext {
     
     let modelContainer: ModelContainer
     let modelContext: ModelContext
-
+    
     private init() {
         let schema = Schema([
             BoardModel.self,
